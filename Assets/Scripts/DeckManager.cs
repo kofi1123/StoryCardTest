@@ -13,6 +13,15 @@ public class DeckManager : MonoBehaviour
         Card[] cards = Resources.LoadAll<Card>("CardData"); // Load all cards from the Resources/CardData folder
 
         deck.AddRange(cards);
+
+        HandManager handManager = FindObjectOfType<HandManager>();
+        for (int i = 0; i < 6; i++) // Draw 6 cards at the start
+        {
+            if (deck.Count > 0)
+            {
+                DrawCard(handManager);
+            }
+        }
     }
 
     public void DrawCard(HandManager handManager)
